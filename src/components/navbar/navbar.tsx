@@ -16,6 +16,18 @@ export default function Navbar() {
     }
   });
 
+  useEffect(() => {
+    let elements = document.getElementsByTagName("a");
+    let currentUrl = window.location.pathname;
+
+    for (let i = 0; i < elements.length; i++) {
+      let element: HTMLAnchorElement = elements[i];
+      if (element.pathname === currentUrl) {
+        element.classList.add("active");
+      }
+    }
+  });
+
   return (
     <div id="nav" className="navbar">
       <div className="hero">
@@ -27,6 +39,10 @@ export default function Navbar() {
         <div className="dollar">
           <span>$</span>
         </div>
+      </div>
+      <div className="routes">
+        <a href="/">HOME</a>
+        <a href="/balance">BALANCE</a>
       </div>
     </div>
   );

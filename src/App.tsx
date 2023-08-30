@@ -9,7 +9,9 @@ export default function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}></Route>
+          <Route path="/" element={<Layout />}>
+            <Route path="/balance"></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

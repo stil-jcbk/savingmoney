@@ -63,3 +63,31 @@
   color: var(--main-theme-color);
   opacity: .09;
 }
+
+.navbar .routes {
+
+  display: flex;
+
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: 50px;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  gap: 40px;
+}
+
+.navbar .routes a {
+  color: var(--secondary-theme-color);
+  text-decoration: none;
+}
+
+.navbar .routes a.active {
+  color: var(--main-theme-color);
+}
+
+.navbar .routes a:focus {
+  color: var(--main-theme-color);
+}
