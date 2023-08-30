@@ -1,3 +1,9 @@
+import Navbar from "../../components/navbar/navbar";
+
 export default function Layout() {
-  return <div></div>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 }
