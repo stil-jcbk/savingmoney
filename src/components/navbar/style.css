@@ -82,6 +82,11 @@
 .navbar .routes a {
   color: var(--secondary-theme-color);
   text-decoration: none;
+  transition: color .2s;
+}
+
+.navbar .routes a:hover {
+  color: var(--main-theme-color-accent);
 }
 
 .navbar .routes a.active {
