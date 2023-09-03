@@ -1,0 +1,21 @@
+.balance {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.balance .title {
+  font-size: 50px;
+  transform: translateY(30px);
+  color: var(--secondary-theme-color);
+}
+
+#balance {
+  font-size: 90px;
+
+  color: var(--main-theme-color);
+}

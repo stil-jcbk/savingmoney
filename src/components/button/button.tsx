@@ -1,7 +1,7 @@
 import "./style.css";
 
 type ButtonProps = {
-  children: String;
+  children: string;
   click: Function;
 };
 

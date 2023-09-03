@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/layout/layout";
 import "./App.css";
+import Balance from "./pages/balance/balance";
 
 export default function App() {
   return (
@@ -10,7 +11,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/balance"></Route>
+            <Route index></Route>
+            <Route path="balance" element={<Balance />} />
           </Route>
         </Routes>
       </BrowserRouter>
