@@ -1,0 +1,24 @@
+.btn {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+
+  padding: 5px 25px 5px 25px;
+
+  background-color: var(--main-theme-color);
+  border: 0;
+  border-radius: 20px;
+
+  cursor: pointer;
+
+  transition: background-color .2s;
+}
+
+.btn:hover {
+  background-color: var(--secondary-theme-color);
+}
+
+.btn:active {
+  transition: background-color 0s;
+  background-color: var(--main-theme-color);
+}
