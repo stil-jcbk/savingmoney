@@ -15,7 +15,6 @@ function changeBlurState() {
   let blur = document.getElementById("blur") as HTMLDivElement | null;
   if (blur != null) {
     let hidden = blur.classList.contains("hidden");
-    console.log(123);
     if (hidden) {
       blur.classList.remove("hidden");
       blur.classList.add("shown");
