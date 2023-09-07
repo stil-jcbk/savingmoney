@@ -2,6 +2,7 @@ import "./style.css";
 
 type SelectProps = {
   items: Array<string>;
+  id?: string;
 };
 
 export default function Select(props: SelectProps) {
@@ -14,7 +15,7 @@ export default function Select(props: SelectProps) {
   };
 
   return (
-    <select name="action" id="action">
+    <select name="action" id={props.id}>
       {addOptions(props.items)}
     </select>
   );
