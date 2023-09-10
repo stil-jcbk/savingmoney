@@ -42,6 +42,7 @@ export function loadHistory(){
 
 export function addAction(HistoryElement: HistoryElement){
   let balance = getBalance();
+  if(HistoryElement.amount <= 0) return displayError(1);
   if(HistoryElement.amount > balance && HistoryElement.action === 1) return displayError(3);
 
   let history = loadHistory()
