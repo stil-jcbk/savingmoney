@@ -6,8 +6,9 @@ type HistoryProps = {
 };
 
 export default function History(props: HistoryProps) {
-  if (props.history === null) props.history = "[]";
-  let history = JSON.parse(props.history);
+  let tempHistory: string = "[]";
+  if (props.history !== null) tempHistory = props.history;
+  let history = JSON.parse(tempHistory);
   return (
     <div id="history">
       <span className="title">HISTORY</span>
