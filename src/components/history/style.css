@@ -1,0 +1,68 @@
+#history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  color: var(--secondary-theme-color);
+}
+
+#history .title {
+  font-size: 50px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.history-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 20px;
+  width: 60%;
+  height: 300px;
+
+  overflow: auto;
+
+  border: 1px solid var(--secondary-theme-color);
+  border-radius: 25px;
+}
+
+.event {
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 75px;
+
+  padding: 0 20px 0 20px;
+
+  font-size: 25px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+
+  border-radius: 25px;
+}
+
+.event.deposit {
+  background-color: rgba(var(--main-theme-color-rgb), 0.6);
+}
+
+.event.withdraw {
+  background-color: rgba(var(--warning-color-rgb), 0.6);
+}
+
+.event .amount {
+  flex: 1;
+  text-align: left;
+}
+
+.event .action {
+  flex: 1;
+  text-align: center;
+}
+
+.event .date {
+  flex: 1;
+  text-align: right;
+}

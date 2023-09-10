@@ -1,8 +1,9 @@
 import Button from "../../components/button/button";
 import ActionDialog from "../../components/actionDialog/actiondialog";
 import "./style.css";
-import { getBalance } from "../../scripts/localdb";
+import { getBalance, loadHistory } from "../../scripts/localdb";
 import { useState } from "react";
+import History from "../../components/history/history";
 
 export function changeDialogState() {
   let dialog = document.getElementById(
@@ -45,6 +46,7 @@ export default function Balance() {
       >
         ACTION
       </Button>
+      <History history={loadHistory()} />
       <ActionDialog
         setBalance={setBalance}
         actionClickFunctions={() => {

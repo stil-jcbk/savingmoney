@@ -33,7 +33,7 @@ export type HistoryElement = {
     date: DateType;
 };
 
-type HistoryList = HistoryElement[];
+export type HistoryList = HistoryElement[];
 
 export function loadHistory(){
   let history = localStorage.getItem("history");
