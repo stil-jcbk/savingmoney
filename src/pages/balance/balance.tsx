@@ -37,15 +37,15 @@ export default function Balance() {
       <div className="balance">
         <span className="title">BALANCE</span>
         <span id="balance">${balance}</span>
+        <Button
+          click={() => {
+            changeDialogState();
+            changeBlurState();
+          }}
+        >
+          ACTION
+        </Button>
       </div>
-      <Button
-        click={() => {
-          changeDialogState();
-          changeBlurState();
-        }}
-      >
-        ACTION
-      </Button>
       <History history={loadHistory()} />
       <ActionDialog
         setBalance={setBalance}
