@@ -6,20 +6,23 @@ type ButtonProps = {
   className?: string;
 };
 
+function classNameCheck(className: string | undefined) {
+  if (className) {
+    if (className.length > 0) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export default function Button(props: ButtonProps) {
-  props.className = "";
   return (
     <button
       onClick={() => {
         props.click();
       }}
       className={
-        "btn" +
-        (props.className.length > 0
-          ? () => {
-              return " " + props.className;
-            }
-          : "")
+        "btn" + (classNameCheck(props.className) ? " " + props.className : "")
       }
     >
       {props.children}
