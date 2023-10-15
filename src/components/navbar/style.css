@@ -6,6 +6,7 @@
 
   position: fixed;
   transform: translateX(-1px);
+  z-index: 1;
 
   overflow: hidden;
 
@@ -95,4 +96,10 @@
 
 .navbar .routes a:focus {
   color: var(--main-theme-color);
+}
+
+@media (max-width: 600px) {
+  .hero .hero-title {
+    display: none;
+  }
 }

@@ -3,6 +3,8 @@
   font-weight: bold;
   font-size: 30px;
 
+  color: var(--background-color);
+
   padding: 5px 25px 5px 25px;
 
   background-color: var(--main-theme-color);
