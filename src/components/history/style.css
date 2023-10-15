@@ -67,3 +67,25 @@
   flex: 1;
   text-align: right;
 }
+
+@media (max-width: 900px) {
+  .event .action {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .history-wrapper {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .event .date {
+    display: none;
+  }
+
+  .event .amount {
+    text-align: center;
+  }
+}
