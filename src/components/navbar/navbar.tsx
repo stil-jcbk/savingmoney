@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./style.css";
 
 export default function Navbar() {
@@ -15,18 +16,27 @@ export default function Navbar() {
       });
     }
   });
+  let location = useLocation();
+
+  let activeElements = document.getElementsByClassName(
+    "active"
+  ) as HTMLCollectionOf<HTMLAnchorElement>;
+
+  for (let i = 0; i < activeElements.length; i++) {
+    let activeElement: HTMLAnchorElement = activeElements[i];
+    activeElement.classList.remove("active");
+  }
 
   useEffect(() => {
     let elements = document.getElementsByTagName("a");
-    let currentUrl = window.location.pathname;
 
     for (let i = 0; i < elements.length; i++) {
       let element: HTMLAnchorElement = elements[i];
-      if (element.pathname === currentUrl) {
+      if (element.href.endsWith(location.pathname)) {
         element.classList.add("active");
       }
     }
-  });
+  }, []);
 
   return (
     <div id="nav" className="navbar">
@@ -41,8 +51,8 @@ export default function Navbar() {
         </div>
       </div>
       <div className="routes">
-        <a href="/">HOME</a>
-        <a href="/balance">BALANCE</a>
+        <Link to={"/"}>HOME</Link>
+        <Link to={"/balance"}>BALANCE</Link>
       </div>
     </div>
   );
