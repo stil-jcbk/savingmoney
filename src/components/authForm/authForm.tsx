@@ -71,15 +71,16 @@ export default function AuthForm(props: AuthFormProps) {
         click={() => {
           Auth((authCheck: boolean, result: UserCredential) => {
             if (authCheck){
+              navigate("/");
               let userid = result.user.uid;
               checkIfUserExists(userid, (result: boolean) => {
                 if (!result) {
-                  newUser(userid);
+                  return newUser(userid);
                 }
               });
-              return navigate("/");
+            }else if(props.type === "login"){
+              return alert("Wrong credentials");
             }
-            alert("Wrong credentials");
           });
         }}
       >
