@@ -1,0 +1,98 @@
+.authform {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--main-theme-color);
+  border-radius: 20px;
+  width: 500px;
+  padding: 20px;
+  color: white;
+}
+
+.authform .title {
+  font-family: "Fugaz One";
+  font-size: 40px;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+.authform input {
+  min-width: 70%;
+  height: 50px;
+
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--secondary-theme-color);
+  border-radius: 20px;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+
+  color: var(--secondary-theme-color);
+  width: fit-content;
+  max-width: 80%;
+}
+
+.authform .input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 20px;
+  margin: 10px;
+}
+
+.btn {
+  color: var(--main-bg-color);
+}
+
+.google-auth {
+  margin: 10px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--secondary-theme-color);
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.google-auth:hover {
+  border-color: var(--main-theme-color);
+}
+
+#google-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.second-option{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.second-option span:hover{
+  color: var(--main-theme-color);
+  text-decoration: underline;
+}
+
+@media (max-width: 660px) {
+  .authform{
+    width: 80%;
+  }
+}
+
+@media (max-width: 400px) {
+  .authform input{
+    width: 80%;
+  }
+}

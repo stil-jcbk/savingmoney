@@ -103,3 +103,8 @@
     display: none;
   }
 }
+
+.username {
+  color: var(--secondary-theme-color);
+  text-transform: uppercase;
+}

@@ -1,9 +1,11 @@
 import Button from "../../components/button/button";
-import ActionDialog from "../../components/actionDialog/actiondialog";
+import ActionDialog from "../../components/actionDialog/actionDialog";
 import "./style.css";
-import { getBalance, loadHistory } from "../../scripts/localdb";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import History from "../../components/history/history";
+import { getUser, userData } from "../../scripts/db";
+import {auth, db} from "../../components/firebase";
+import {doc, onSnapshot} from "firebase/firestore";
 
 export function changeDialogState() {
   let dialog = document.getElementById(
@@ -29,7 +31,18 @@ export function changeBlurState() {
 }
 
 export default function Balance() {
-  const [balance, setBalance] = useState(getBalance());
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    let user = auth.currentUser;
+    if (user) {
+      const docRef = doc(db, "users", user.uid)
+      onSnapshot(docRef, (snapshot) => {
+        let data = snapshot.data() as userData;
+        return setBalance(data.balance)
+      })
+    }
+  }, []);
 
   return (
     <div className="body">
@@ -46,9 +59,8 @@ export default function Balance() {
           ACTION
         </Button>
       </div>
-      <History history={loadHistory()} />
+      <History />
       <ActionDialog
-        setBalance={setBalance}
         actionClickFunctions={() => {
           changeDialogState();
           changeBlurState();

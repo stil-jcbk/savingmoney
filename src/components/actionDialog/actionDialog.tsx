@@ -1,23 +1,24 @@
+import React from "react"
 import "./style.css";
 import Select from "../select/select";
 import Button from "../button/button";
 import displayError from "../../scripts/displayerror";
-import { DateType, HistoryElement, addAction } from "../../scripts/localdb";
+import { DateType, HistoryElement, addAction } from "../../scripts/db";
 import {
   changeBlurState,
   changeDialogState,
 } from "../../pages/balance/balance";
+import {auth} from "../firebase";
 
 type ActionDialogProps = {
   id: string;
-  setBalance: React.Dispatch<React.SetStateAction<number>>;
   actionClickFunctions: Function;
 };
 
-function buttonAction(callback: any) {
+async function buttonAction() {
+  console.log("HELLOL")
   function actionCheck(action: string) {
-    if (action === "deposit" || action === "withdraw") return true;
-    return false;
+    return action === "deposit" || action === "withdraw";
   }
 
   let actionElement = document.getElementById("action") as HTMLSelectElement;
@@ -44,7 +45,7 @@ function buttonAction(callback: any) {
       date: date,
     };
 
-    callback(addAction(data));
+    await addAction(auth.currentUser!.uid ,data);
   }
 
   changeBlurState();
@@ -65,12 +66,7 @@ export default function ActionDialog(props: ActionDialogProps) {
       <span className="title">amount</span>
       <input id="amount" placeholder="$0" maxLength={20} />
       <Button
-        click={() => {
-          buttonAction((balance: number | void) => {
-            if (isNaN(balance as number)) return;
-            return props.setBalance(balance as number);
-          });
-        }}
+        click={buttonAction}
       >
         ADD
       </Button>

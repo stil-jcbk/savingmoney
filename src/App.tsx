@@ -4,6 +4,9 @@ import Layout from "./pages/layout/layout";
 import "./App.css";
 import Balance from "./pages/balance/balance";
 import Home from "./pages/home/home";
+import Login from "./pages/login/login";
+import Register from "./pages/register/register";
+import AuthRoute from "./components/authRoute/authRoute";
 
 const router = createHashRouter([
   {
@@ -15,10 +18,23 @@ const router = createHashRouter([
         element: <Home />,
       },
       {
-        path: "/balance",
-        element: <Balance />,
+        element: <AuthRoute />,
+        children: [
+          {
+            path: "/balance",
+            element: <Balance />,
+          },
+        ],
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 

@@ -1,14 +1,22 @@
 import "./style.css";
-import { HistoryElement } from "../../scripts/localdb";
+import {useState} from "react";
+import {loadHistory, HistoryElement} from "../../scripts/db";
+import {auth} from "../firebase";
 
 type HistoryProps = {
   history: string | null;
 };
 
-export default function History(props: HistoryProps) {
+export default function History(){
+  const [history, setHistory] = useState([])
+  let user = auth.currentUser
   let tempHistory: string = "[]";
-  if (props.history !== null) tempHistory = props.history;
-  let history = JSON.parse(tempHistory);
+  if(user){
+    loadHistory(user.uid, (history: string) => {
+      if(history !== null && history !== "") tempHistory = history;
+      setHistory(JSON.parse(tempHistory));
+    })
+  }
   return (
     <div id="history">
       <span className="title">HISTORY</span>
