@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./style.css";
+import NavDrop from "../navdrop/navdrop";
+import NavDropItem from "../navdrop/navdropitem";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -75,15 +77,21 @@ export default function Navbar() {
         {authUser ? (
           <>
             <Link to={"/balance"}>BALANCE</Link>
-            <span
-              onClick={() => {
+            {/*<span*/}
+            {/*  onClick={() => {*/}
+            {/*    signOut(auth);*/}
+            {/*    navigate("/");*/}
+            {/*  }}*/}
+            {/*  className="username"*/}
+            {/*>*/}
+            {/*  {getUsername(authUser.email)}*/}
+            {/*</span>*/}
+            <NavDrop name={getUsername(authUser.email)}>
+              <NavDropItem onClick={() => {
                 signOut(auth);
                 navigate("/");
-              }}
-              className="username"
-            >
-              {getUsername(authUser.email)}
-            </span>
+              }} text="logout"/>
+            </NavDrop>
           </>
         ) : (
           <Link to={"/login"}>LOGIN</Link>

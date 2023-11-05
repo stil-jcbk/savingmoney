@@ -1,0 +1,39 @@
+.navdrop {
+    position: relative;
+    color: var(--secondary-theme-color);
+}
+
+.navdrop:hover .username {
+    color: var(--main-theme-color);
+    cursor: default;
+}
+
+.navdrop:hover .drop {
+    display: flex;
+}
+
+.drop {
+    position: absolute;
+    display: none;
+
+    height: max-content;
+    width: max-content;
+
+    padding: 15px;
+    right: 0;
+
+    font-size: 18px;
+    text-align: right;
+
+    background: var(--main-bg-color);
+    border: 1px solid var(--secondary-theme-color);
+    border-radius: 15px;
+
+    flex-direction: column;
+    gap: 5px;
+}
+
+.drop .item:hover {
+    color: var(--main-theme-color);
+    cursor: pointer;
+}
