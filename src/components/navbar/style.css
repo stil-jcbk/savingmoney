@@ -6,7 +6,7 @@
 
   position: fixed;
   transform: translateX(-1px);
-  z-index: 1;
+  z-index: 900;
 
   background-color: var(--main-bg-color);
   border-left: 1px solid var(--secondary-theme-color);
