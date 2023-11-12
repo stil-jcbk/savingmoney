@@ -24,7 +24,6 @@ export default function Goal(props: GoalProps){
             let userid = auth.currentUser.uid;
             getUser(userid, (user: userData) => {
                 if(user.balance < props.goal) return displayError(5);
-                changeBalance(userid, 1, props.goal);
                 
                 let currentDate = new Date();
                 let date: DateType = {
