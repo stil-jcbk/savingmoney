@@ -55,7 +55,7 @@ async function buttonAction() {
 export default function ActionDialog(props: ActionDialogProps) {
   return (
     <dialog id={props.id}>
-      <div
+      <span
         onClick={() => {
           props.actionClickFunctions();
         }}
