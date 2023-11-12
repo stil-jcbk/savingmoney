@@ -90,7 +90,7 @@
   color: var(--main-theme-color-accent);
 }
 
-.navbar .routes a.active {
+.navbar .routes .active {
   color: var(--main-theme-color);
 }
 

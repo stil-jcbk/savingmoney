@@ -6,7 +6,21 @@ import NavDropItem from "../navdrop/navdropitem";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "../firebase";
 
+const useActiveTabState = (): [HTMLElement | undefined, (element: HTMLElement) => void] => {
+  const [activeTab, setActiveTab] = useState<HTMLElement>()
+  const setNewActiveTab = async (element: HTMLElement) => {
+    if(activeTab && activeTab !== element){
+      activeTab.classList.remove("active")
+    }
+    setActiveTab(element);
+    return true;
+  }
+
+  return [activeTab, setNewActiveTab]
+}
+
 export default function Navbar() {
+  const [activeTab, setNewActiveTab] = useActiveTabState();
   //auth
   const [authUser, setAuthUser] = useState<any>(null);
 
@@ -18,9 +32,7 @@ export default function Navbar() {
         } else {
           setAuthUser(null);
         }
-      }),
-    []
-  );
+      }),[]);
 
   //navbar movement
   useEffect(() => {
@@ -36,29 +48,11 @@ export default function Navbar() {
       });
     }
   }, []);
-  let location = useLocation();
   let navigate = useNavigate();
 
-  let activeElements = document.getElementsByClassName(
-    "active"
-  ) as HTMLCollectionOf<HTMLAnchorElement>;
-
-  for (let i = 0; i < activeElements.length; i++) {
-    let activeElement: HTMLAnchorElement = activeElements[i];
-    activeElement.classList.remove("active");
+  if(activeTab){
+    activeTab.classList.add("active")
   }
-
-  //active page
-  useEffect(() => {
-    let elements = document.getElementsByTagName("a");
-
-    for (let i = 0; i < elements.length; i++) {
-      let element: HTMLAnchorElement = elements[i];
-      if (element.href.endsWith(location.pathname)) {
-        element.classList.add("active");
-      }
-    }
-  }, []);
 
   return (
     <div id="nav" className="navbar">
@@ -73,10 +67,10 @@ export default function Navbar() {
         </div>
       </div>
       <div className="routes">
-        <Link to={"/"}>HOME</Link>
+        <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/"}>HOME</Link>
         {authUser ? (
           <>
-            <Link to={"/balance"}>BALANCE</Link>
+            <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/balance"}>BALANCE</Link>
             {/*<span*/}
             {/*  onClick={() => {*/}
             {/*    signOut(auth);*/}
@@ -87,7 +81,10 @@ export default function Navbar() {
             {/*  {getUsername(authUser.email)}*/}
             {/*</span>*/}
             <NavDrop name={getUsername(authUser.email)}>
-              <NavDropItem text="goals" onClick={() => {navigate("/goals")}} />
+              <NavDropItem text="goals" onClick={(e) => {
+                setNewActiveTab(e.target as HTMLElement)
+                navigate("/goals")
+              }} />
               <NavDropItem onClick={() => {
                 signOut(auth);
                 navigate("/");
@@ -95,7 +92,7 @@ export default function Navbar() {
             </NavDrop>
           </>
         ) : (
-          <Link to={"/login"}>LOGIN</Link>
+          <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/login"}>LOGIN</Link>
         )}
       </div>
     </div>
