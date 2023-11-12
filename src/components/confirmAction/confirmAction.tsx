@@ -13,10 +13,6 @@ type confirmation = {
     function?: Function;
 }
 
-type scrollStyle = {
-    overflow: "";
-}
-
 export const useConfirmationState = (): [confirmation, React.Dispatch<React.SetStateAction<confirmation>>] => {
     const [confirm, setConfirm] = useState<confirmation>({state: false, function: () => {}})
     let HTMLElement = document.getElementsByTagName("html")[0];
