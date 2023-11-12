@@ -118,14 +118,14 @@
     .goal-new .icon{
         font-size: 100px;
     }
+
+    .goal .btn{
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 480px){
     .goals-container{
         grid-template-columns: repeat(1, 1fr);
-    }
-    
-    .goal .btn{
-        font-size: 20px;
     }
 }
