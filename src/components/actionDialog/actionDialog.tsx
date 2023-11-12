@@ -16,7 +16,6 @@ type ActionDialogProps = {
 };
 
 async function buttonAction() {
-  console.log("HELLOL")
   function actionCheck(action: string) {
     return action === "deposit" || action === "withdraw";
   }
@@ -27,7 +26,6 @@ async function buttonAction() {
     let action: string = actionElement.value;
     let amount: number = parseFloat(amountElement.value);
     if (isNaN(amount) || !actionCheck(action)) return displayError(1);
-    console.log(`action: ${action}\namount: $${amount}`);
 
     let actionId: 0 | 1 = 0;
     if (action === "withdraw") actionId = 1;

@@ -7,8 +7,6 @@ import { db } from "../../components/firebase";
 export default function Home() {
   const [data, setData] = useState<any[]>([]);
 
-  console.log(data);
-
   useEffect(
     () =>
       onSnapshot(collection(db, "users"), (snapshot) => {

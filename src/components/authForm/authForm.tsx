@@ -25,7 +25,6 @@ export default function AuthForm(props: AuthFormProps) {
       if (props.type === "login") {
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            console.log(userCredential);
             callback(true, userCredential);
           })
           .catch((error) => {
@@ -35,7 +34,6 @@ export default function AuthForm(props: AuthFormProps) {
       } else {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            console.log(userCredential.user.uid);
             callback(true);
           })
           .catch((error) => {

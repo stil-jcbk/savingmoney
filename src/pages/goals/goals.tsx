@@ -91,7 +91,6 @@ export default function Goals(){
                     goals[goal].id = goalsIds[goal];
                 }
                 goals.sort((a,b) => b.date - a.date)
-                console.log(goals)
                 return setGoals(goals)
             })
         }
