@@ -71,15 +71,6 @@ export default function Navbar() {
         {authUser ? (
           <>
             <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/balance"}>BALANCE</Link>
-            {/*<span*/}
-            {/*  onClick={() => {*/}
-            {/*    signOut(auth);*/}
-            {/*    navigate("/");*/}
-            {/*  }}*/}
-            {/*  className="username"*/}
-            {/*>*/}
-            {/*  {getUsername(authUser.email)}*/}
-            {/*</span>*/}
             <NavDrop name={getUsername(authUser.email)}>
               <NavDropItem text="goals" onClick={(e) => {
                 setNewActiveTab(e.target as HTMLElement)
