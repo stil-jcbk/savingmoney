@@ -1,5 +1,5 @@
 import { db } from "../components/firebase";
-import { setDoc, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import {setDoc, doc, getDoc, deleteDoc, onSnapshot, updateDoc} from "firebase/firestore";
 import displayError from "../scripts/displayerror"
 
 export type userData = {
@@ -21,6 +21,15 @@ export type userData = {
 
 export type HistoryList = HistoryElement[];
 
+
+const genId = (length: number) => {
+  let result = "";
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+  for(let i = 0; i < characters.length; i++){
+    result += characters.charAt(Math.floor(Math.random() * characters.length))
+  }
+  return result
+}
 
 export const newUser = async (userid: string) => {
   const docRef = doc(db, "users", userid)
@@ -96,3 +105,14 @@ export const updateHistory = async (userid: string, history: string) => {
      })
    })
  }
+
+export const newGoal = async (userid: string, payload: {title: string, goal: number, date: number}) => {
+  const goalid = genId(8);
+  const docRef = doc(db, `users/${userid}/goals`, goalid);
+  await setDoc(docRef, payload);
+}
+
+export const removeGoal = async (userid: string, goalid: string) => {
+  const docRef = doc(db, `users/${userid}/goals`, goalid)
+  await deleteDoc(docRef)
+}

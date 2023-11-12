@@ -4,6 +4,8 @@ export default function displayError(errorNumber: number) {
   1. ActionDialog error (wrong selection/input)
   2. History loading error
   3. Not enough balance to make a withdraw
+  4. NewGoal error (invalid goal value)
+  5. Complete goal error (insufficient balance)
   */
   let errorMessage = "";
 
@@ -18,6 +20,12 @@ export default function displayError(errorNumber: number) {
 
     case 3:
       errorMessage = "Error #3\nNot enough balance to make a withdraw";
+      break;
+    case 4:
+      errorMessage = "Error #4\nInvalid goal value";
+      break;
+    case 5:
+      errorMessage = "Error #5\nInsufficient balance";
       break;
     default:
       errorMessage = "Unknown error";

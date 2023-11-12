@@ -3,6 +3,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import Layout from "./pages/layout/layout";
 import "./App.css";
 import Balance from "./pages/balance/balance";
+import Goals from "./pages/goals/goals";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
@@ -23,6 +24,10 @@ const router = createHashRouter([
           {
             path: "/balance",
             element: <Balance />,
+          },
+          {
+            path: "/goals",
+            element: <Goals />,
           },
         ],
       },

@@ -1,0 +1,65 @@
+.progressbar {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 260px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.progressbar .point-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.progressbar .point {
+    position: absolute;
+    content: "";
+    background-color: #AC58FF;
+    width: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    z-index: 0;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}
+
+.progressbar .bar-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.progressbar .bar-container .bar-bg {
+    position: absolute;
+    content: "";
+    width: 200px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background: var(--main-bg-color);
+}
+
+.progressbar .bar-container .bar {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+}
+
+.progressbar .perc {
+    position: relative;
+    z-index: 1;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+}

@@ -1,0 +1,131 @@
+.goals-container{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    
+    gap: 25px;
+    padding: 25px;
+    border: 1px solid var(--secondary-theme-color);
+    border-radius: 25px;
+    
+    overflow-x: scroll;
+}
+
+.goal-new{
+    min-width: 300px;
+    transition: .5s ease;
+}
+
+.goal-new .icon{
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 264px;
+    color: white;
+    transition: .5s ease
+}
+
+.goal-new.hidden{
+    cursor: pointer;
+}
+
+.goal-new.hidden:hover {
+    background-color: var(--secondary-theme-color);
+}
+
+.goal-new.hidden:hover .icon{
+    user-select: none;
+    color: var(--main-bg-color);
+}
+
+#goal-preform{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    width: 100%;
+    height: 100%;
+}
+
+#goal-form {
+    display: none;
+    
+    width: 100%;
+    height: 100%;
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.goal-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: auto;
+}
+
+.goal-form input{
+    width: 70%;
+    height: 50px;
+
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--secondary-theme-color);
+    border-radius: 20px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+
+    color: var(--secondary-theme-color);
+    margin-bottom: 40px;
+}
+
+#goal-form-close-btn{
+    width: 14px;
+    height: 14px;
+    background-color: var(--warning-color);
+    border-radius: 50%;
+    margin-bottom: auto;
+    margin-left: auto;
+    
+    cursor: pointer;
+
+    transition: background-color .2s;
+}
+
+#goal-form-close-btn:hover{
+    background-color: var(--secondary-theme-color);
+}
+
+@media (max-width: 600px) {
+    .goals-container{
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        overflow-x: auto;
+        
+        gap: 5px;
+        
+        border: none;
+        padding: 0;
+    }
+
+    .goal-new{
+        min-width: unset;
+    }
+
+    .goal-new .icon{
+        font-size: 100px;
+    }
+}
+
+@media (max-width: 480px){
+    .goals-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .goal .btn{
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,38 @@
+.confirm-action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    z-index: 990;
+    
+    backdrop-filter: blur(10px);
+}
+
+.confirm-action .dialog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: max-content;
+    height: max-content;
+    padding: 20px;
+    
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--secondary-theme-color);
+    border-radius: 25px;
+    
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+.confirm-action .buttons{
+    display: flex;
+    gap: 20px;
+}

@@ -87,6 +87,7 @@ export default function Navbar() {
             {/*  {getUsername(authUser.email)}*/}
             {/*</span>*/}
             <NavDrop name={getUsername(authUser.email)}>
+              <NavDropItem text="goals" onClick={() => {navigate("/goals")}} />
               <NavDropItem onClick={() => {
                 signOut(auth);
                 navigate("/");
