@@ -18,7 +18,7 @@ export default function AuthForm(props: AuthFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const Auth = (callback: Function) => {
+  const Auth = (callback: (authCheck: boolean, userCredential?: UserCredential) => void) => {
     let vEmail = validateEmail(email);
     let vPass = validatePassword(password);
     if (vEmail && vPass) {
@@ -34,7 +34,7 @@ export default function AuthForm(props: AuthFormProps) {
       } else {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            callback(true);
+            callback(true, userCredential);
           })
           .catch((error) => {
             console.error(error);
@@ -67,8 +67,8 @@ export default function AuthForm(props: AuthFormProps) {
       </div>
       <Button
         click={() => {
-          Auth((authCheck: boolean, result: UserCredential) => {
-            if (authCheck){
+          Auth((authCheck, result) => {
+            if (authCheck && result){
               navigate("/");
               let userid = result.user.uid;
               checkIfUserExists(userid, (result: boolean) => {
