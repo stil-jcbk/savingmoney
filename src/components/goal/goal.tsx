@@ -74,7 +74,7 @@ export default function Goal(props: GoalProps){
             changeHoverState(e.currentTarget, "show")
         }} className={"goal" + ((perc >= 100)? " complete" : "")}>
             <div className="options">
-                {perc >= -100?
+                {perc >= 100?
                 <Button click={() => {
                     setConfirm({state: true, function: completeGoal})
                 }}>COMPLETE</Button>
