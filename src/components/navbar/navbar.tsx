@@ -7,6 +7,7 @@ import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "../firebase";
 import {useTranslation} from "react-i18next";
 import LanguageSelect from "../../components/languageSelect/languageSelect";
+import BurgerMenu from "../burgerMenu/burgerMenu";
 
 const useActiveTabState = (): [HTMLElement | undefined, (element: HTMLElement) => void] => {
   const [activeTab, setActiveTab] = useState<HTMLElement>()
@@ -25,6 +26,7 @@ export default function Navbar() {
   const [activeTab, setNewActiveTab] = useActiveTabState();
   //auth
   const [authUser, setAuthUser] = useState<any>(null);
+  const [windowSize, setWindowSize] = useState<number>(window.screen.width)
 
   const {t} = useTranslation()
 
@@ -50,14 +52,42 @@ export default function Navbar() {
           nav.classList.remove("moved");
         }
       });
+
+      window.addEventListener("resize", () => {
+        setWindowSize(window.screen.width)
+      })
     }
   }, []);
   let navigate = useNavigate();
+
 
   if(activeTab){
     activeTab.classList.add("active")
   }
 
+  const generateContent = () => (
+    <>
+    <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/"}>{t("Nav.Home")}</Link>
+    {authUser ? (
+      <>
+      <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/balance"}>{t("Nav.Balance")}</Link>
+      <NavDrop name={getUsername(authUser.email)}>
+        <NavDropItem text={t("Nav.Goals")} onClick={(e) => {
+          setNewActiveTab(e.target as HTMLElement)
+          navigate("/goals")
+        }} />
+        <NavDropItem onClick={() => {
+          signOut(auth);
+          navigate("/");
+        }} text={t("Nav.Logout")}/>
+      </NavDrop>
+      </>
+      ) : (
+        <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/login"}>{t("Nav.Login")}</Link>
+        )}
+    <LanguageSelect/>
+    </>
+  )
   return (
     <div id="nav" className="navbar">
       <div className="hero">
@@ -71,25 +101,15 @@ export default function Navbar() {
         </div>
       </div>
       <div className="routes">
-        <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/"}>{t("Nav.Home")}</Link>
-        {authUser ? (
+        {windowSize <= 910?
+          <BurgerMenu>
+            {generateContent()}
+          </BurgerMenu>
+        :
           <>
-            <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/balance"}>{t("Nav.Balance")}</Link>
-            <NavDrop name={getUsername(authUser.email)}>
-              <NavDropItem text={t("Nav.Goals")} onClick={(e) => {
-                setNewActiveTab(e.target as HTMLElement)
-                navigate("/goals")
-              }} />
-              <NavDropItem onClick={() => {
-                signOut(auth);
-                navigate("/");
-              }} text={t("Nav.Logout")}/>
-            </NavDrop>
+            {generateContent()}
           </>
-        ) : (
-          <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/login"}>{t("Nav.Login")}</Link>
-        )}
-      <LanguageSelect/>
+        }
       </div>
     </div>
   );
