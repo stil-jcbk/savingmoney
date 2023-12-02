@@ -8,6 +8,24 @@
   --warning-color-rgb: 255, 56, 56;
 }
 
+::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--main-theme-color-rgb), .5);
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-theme-color)
+}
+
 body {
   background-color: var(--main-bg-color);
   margin: 0;
