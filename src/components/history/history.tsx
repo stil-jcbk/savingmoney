@@ -2,6 +2,7 @@ import "./style.css";
 import {useState} from "react";
 import {loadHistory, HistoryElement} from "../../scripts/db";
 import {auth} from "../firebase";
+import {useTranslation} from "react-i18next";
 
 type HistoryProps = {
   history: string | null;
@@ -9,6 +10,8 @@ type HistoryProps = {
 
 export default function History(){
   const [history, setHistory] = useState([])
+  const {t} = useTranslation()
+
   let user = auth.currentUser
   let tempHistory: string = "[]";
   if(user){
@@ -19,7 +22,7 @@ export default function History(){
   }
   return (
     <div id="history">
-      <span className="title">HISTORY</span>
+      <span className="title">{t("Balance.HistoryTitle")}</span>
       <ul className="history-wrapper">
         {history.map((event: HistoryElement, i: number) => {
           return (
@@ -31,7 +34,7 @@ export default function History(){
             >
               <span className="amount">${event.amount}</span>
               <span className="action">
-                {event.action === 0 ? "deposit" : "withdraw"}
+                {event.action === 0 ? t("History.deposit") : t("History.withdraw")}
               </span>
               <span className="date">
                 {event.date.day}.{event.date.month}.{event.date.year}

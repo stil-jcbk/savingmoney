@@ -6,6 +6,7 @@ import History from "../../components/history/history";
 import { getUser, userData } from "../../scripts/db";
 import {auth, db} from "../../components/firebase";
 import {doc, onSnapshot} from "firebase/firestore";
+import {useTranslation} from "react-i18next";
 
 export function changeDialogState() {
   let dialog = document.getElementById(
@@ -33,6 +34,8 @@ export function changeBlurState() {
 export default function Balance() {
   const [balance, setBalance] = useState(0);
 
+  const {t} = useTranslation()
+
   useEffect(() => {
     let user = auth.currentUser;
     if (user) {
@@ -48,7 +51,7 @@ export default function Balance() {
     <div className="body">
       <div id="blur" className="hidden" />
       <div className="balance">
-        <span className="title">BALANCE</span>
+        <span className="title">{t("Balance.BalanceTitle")}</span>
         <span id="balance">${balance}</span>
         <Button
           click={() => {
@@ -56,7 +59,7 @@ export default function Balance() {
             changeBlurState();
           }}
         >
-          ACTION
+          {t("Balance.ActionButton")}
         </Button>
       </div>
       <History />

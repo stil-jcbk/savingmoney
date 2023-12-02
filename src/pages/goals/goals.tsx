@@ -8,8 +8,10 @@ import {newGoal} from "../../scripts/db";
 import Goal from "../../components/goal/goal"
 import Button from "../../components/button/button";
 import displayError from "../../scripts/displayerror";
+import {useTranslation} from "react-i18next";
 
 function NewGoal(){
+    const {t} = useTranslation()
     const switchForm = (type: "hide" | "show") => {
         let goalNew = document.getElementById("goal-new")
         let goalPreform = document.getElementById("goal-preform");
@@ -54,9 +56,9 @@ function NewGoal(){
             <div id="goal-form">
                 <span onClick={() => {switchForm("hide")}} id="goal-form-close-btn"/>
                     <div className="goal-form">
-                        <input id="goal-title-input" type="text" placeholder="title"/>
+                        <input id="goal-title-input" type="text" placeholder={t("Goals.Title")}/>
                         <input id="goal-amount-input" type="text" placeholder="$0" />
-                        <Button click={buttonAction}>ADD</Button>
+                        <Button click={buttonAction}>{t("Goals.Add")}</Button>
                     </div>
             </div>
         </div>

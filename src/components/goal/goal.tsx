@@ -6,6 +6,7 @@ import React from "react";
 import {addAction, changeBalance, DateType, getUser, HistoryElement, removeGoal, userData} from "../../scripts/db";
 import {auth} from "../firebase";
 import displayError from "../../scripts/displayerror";
+import {useTranslation} from "react-i18next";
 
 export type GoalProps = {
     title: string;
@@ -16,6 +17,7 @@ export type GoalProps = {
 
 export default function Goal(props: GoalProps){
     const [confirm, setConfirm] = useConfirmationState()
+    const {t} = useTranslation()
     
     let perc = Math.floor(props.balance/props.goal * 100);
     
@@ -63,7 +65,7 @@ export default function Goal(props: GoalProps){
         <>
         {confirm.state?
         <ConfirmAction action={confirm.function!} cancel={() => {setConfirm({state: false})}}>
-            This action is permanent. Are you sure you want to continue?
+            {t("Confirmation.Text")}
         </ConfirmAction>
             :
         <></>
@@ -77,11 +79,11 @@ export default function Goal(props: GoalProps){
                 {perc >= 100?
                 <Button click={() => {
                     setConfirm({state: true, function: completeGoal})
-                }}>COMPLETE</Button>
+                }}>{t("Goals.Complete")}</Button>
                 :
                 <></>
                 }
-                <Button className="remove-btn" click={() => {setConfirm({state: true, function: _removeGoal})}}>REMOVE</Button>
+                <Button className="remove-btn" click={() => {setConfirm({state: true, function: _removeGoal})}}>{t("Goals.Remove")}</Button>
             </div>
             <div className="content">
                 <span className="title">{props.title}</span>

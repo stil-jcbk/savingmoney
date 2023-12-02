@@ -3,9 +3,13 @@ import Section from "../../components/section/section";
 import { onSnapshot, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../components/firebase";
+import { useTranslation } from "react-i18next";
+//import "../../i18n"
 
 export default function Home() {
   const [data, setData] = useState<any[]>([]);
+
+  const {t} = useTranslation()
 
   useEffect(
     () =>
@@ -18,19 +22,11 @@ export default function Home() {
   return (
     <div className="body">
       <div className="home">
-        <Section title="ABOUT US">
-          Welcome to <span className="more">SAVE.CASH</span>, your digital piggy
-          bank for cash! We understand the importance of saving money and making
-          it an easy and enjoyable experience. Our platform is designed to help
-          you keep track of your cash savings in a simple and convenient way.
+        <Section title={t("AboutSection.title")}>
+          {t("AboutSection.content.prelogo")}<span className="more">SAVE.CASH</span>{t("AboutSection.content.afterlogo")}
         </Section>
-        <Section title="WHY CHOOSE US?" position="right" textAlignment="right">
-          At <span className="more">SAVE.CASH</span>, we believe that saving
-          money should be a hassle-free and rewarding endeavor. We offer a
-          seamless solution for individuals looking to manage their cash
-          savings, whether you're saving up for a special vacation, a rainy day
-          fund, or simply want a digital record of your cash deposits and
-          withdrawals.
+        <Section title={t("WhyUsSection.title")} position="right" textAlignment="right">
+          {t("WhyUsSection.content.prelogo")}<span className="more">SAVE.CASH</span>{t("WhyUsSection.content.afterlogo")}
         </Section>
       </div>
     </div>

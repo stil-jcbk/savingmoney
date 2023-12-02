@@ -1,0 +1,64 @@
+{
+    "Nav": {
+        "Home": "HOME",
+        "Balance": "BALANCE",
+        "Goals": "goals",
+        "Logout": "logout",
+        "Login": "LOGIN"
+    },
+    "Auth": {
+        "LoginForm": {
+            "Title": "LOGIN",
+            "email": "email",
+            "password": "password",
+            "ButtonText": "login",
+            "RegisterInstead": "create an account"
+        },
+        "RegisterForm": {
+            "Title": "REGISTER",
+            "email": "email",
+            "password": "password",
+            "ButtonText": "register",
+            "RegisterInstead": "login instead"
+        }
+    },
+    "AboutSection": {
+        "title": "ABOUT US",
+        "content": {
+            "prelogo": "Welcome to ",
+            "afterlogo": ", your digital piggy bank for cash! We understand the importance of saving money and making it an easy and enjoyable experience. Our platform is designed to help you keep track of your cash savings in a simple and convenient way."
+        }
+    },
+    "WhyUsSection": {
+        "title": "WHY CHOOSE US?",
+        "content": {
+            "prelogo": "At ",
+            "afterlogo": ", we believe that saving money should be a hassle-free and rewarding endeavor. We offer a seamless solution for individuals looking to manage their cash savings, whether you're saving up for a special vacation, a rainy day fund, or simply want a digital record of your cash deposits and withdrawals."
+        }
+    },
+    "Balance": {
+        "BalanceTitle": "BALANCE",
+        "ActionButton": "ACTION",
+        "HistoryTitle": "HISTORY",
+        "Action": "action",
+        "Amount": "amount",
+        "Deposit": "deposit",
+        "Withdraw": "withdraw",
+        "Add": "ADD"
+    },
+    "History": {
+        "deposit": "deposit",
+        "withdraw": "withdraw"
+    },
+    "Goals": {
+        "Complete": "COMPLETE",
+        "Remove": "REMOVE",
+        "Title": "title",
+        "Add": "ADD"
+    },
+    "Confirmation": {
+        "Text": "This action is permanent. Are you sure you want to continue?",
+        "Yes": "Yes",
+        "No": "No"
+    }
+}

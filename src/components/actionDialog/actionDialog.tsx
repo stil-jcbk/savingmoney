@@ -9,6 +9,7 @@ import {
   changeDialogState,
 } from "../../pages/balance/balance";
 import {auth} from "../firebase";
+import {useTranslation} from "react-i18next";
 
 type ActionDialogProps = {
   id: string;
@@ -51,6 +52,8 @@ async function buttonAction() {
 }
 
 export default function ActionDialog(props: ActionDialogProps) {
+  const {t} = useTranslation()
+
   return (
     <dialog id={props.id}>
       <span
@@ -59,14 +62,14 @@ export default function ActionDialog(props: ActionDialogProps) {
         }}
         id="closeDialogButton"
       />
-      <span className="title">action</span>
-      <Select id="action" items={["deposit", "withdraw"]} />
-      <span className="title">amount</span>
+      <span className="title">{t("Balance.Action")}</span>
+      <Select id="action" items={[t("Balance.Deposit"), t("Balance.Withdraw")]} />
+      <span className="title">{t("Balance.Amount")}</span>
       <input id="amount" placeholder="$0" maxLength={20} />
       <Button
         click={buttonAction}
       >
-        ADD
+        {t("Balance.Add")}
       </Button>
     </dialog>
   );

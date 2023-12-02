@@ -5,6 +5,8 @@ import NavDrop from "../navdrop/navdrop";
 import NavDropItem from "../navdrop/navdropitem";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "../firebase";
+import {useTranslation} from "react-i18next";
+import LanguageSelect from "../../components/languageSelect/languageSelect";
 
 const useActiveTabState = (): [HTMLElement | undefined, (element: HTMLElement) => void] => {
   const [activeTab, setActiveTab] = useState<HTMLElement>()
@@ -23,6 +25,8 @@ export default function Navbar() {
   const [activeTab, setNewActiveTab] = useActiveTabState();
   //auth
   const [authUser, setAuthUser] = useState<any>(null);
+
+  const {t} = useTranslation()
 
   useEffect(
     () =>
@@ -67,24 +71,25 @@ export default function Navbar() {
         </div>
       </div>
       <div className="routes">
-        <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/"}>HOME</Link>
+        <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/"}>{t("Nav.Home")}</Link>
         {authUser ? (
           <>
-            <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/balance"}>BALANCE</Link>
+            <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/balance"}>{t("Nav.Balance")}</Link>
             <NavDrop name={getUsername(authUser.email)}>
-              <NavDropItem text="goals" onClick={(e) => {
+              <NavDropItem text={t("Nav.Goals")} onClick={(e) => {
                 setNewActiveTab(e.target as HTMLElement)
                 navigate("/goals")
               }} />
               <NavDropItem onClick={() => {
                 signOut(auth);
                 navigate("/");
-              }} text="logout"/>
+              }} text={t("Nav.Logout")}/>
             </NavDrop>
           </>
         ) : (
-          <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/login"}>LOGIN</Link>
+          <Link onClick={(e) => {setNewActiveTab(e.currentTarget)}} to={"/login"}>{t("Nav.Login")}</Link>
         )}
+      <LanguageSelect/>
       </div>
     </div>
   );

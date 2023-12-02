@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./style.css"
 import Button from "../button/button";
+import {useTranslation} from "react-i18next";
 
 type confirmActionProps = {
     action: Function;
@@ -29,13 +30,15 @@ export const useConfirmationState = (): [confirmation, React.Dispatch<React.SetS
 }
 
 export default function ConfirmAction(props: confirmActionProps){
+    const {t} = useTranslation()
+
     return(
         <div className="confirm-action">
             <div className="dialog">
                 <p>{props.children}</p>
                 <div className="buttons">
-                    <Button click={props.action}>YES</Button>
-                    <Button click={props.cancel}>NO</Button>
+                    <Button click={props.action}>{t("Confirmation.Yes")}</Button>
+                    <Button click={props.cancel}>{t("Confirmation.No")}</Button>
                 </div>
                 </div>
         </div>

@@ -1,0 +1,64 @@
+{
+    "Nav": {
+        "Home": "STRONA GŁÓWNA",
+        "Balance": "SALDO",
+        "Goals": "cele",
+        "Logout": "wyloguj",
+        "Login": "ZALOGUJ"
+    },
+    "Auth": {
+        "LoginForm": {
+            "Title": "LOGOWANIE",
+            "email": "email",
+            "password": "hasło",
+            "ButtonText": "zaloguj",
+            "RegisterInstead": "zarejestruj"
+        },
+        "RegisterForm": {
+            "Title": "REJESTRACJA",
+            "email": "email",
+            "password": "hasło",
+            "ButtonText": "zarejestruj",
+            "RegisterInstead": "zaloguj"
+        }
+    },
+    "AboutSection": {
+        "title": "O NAS",
+        "content": {
+            "prelogo": "Witamy w ",
+            "afterlogo": ", twojej wirtualnej skarbonce na gotówkę! Wiemy, jak ważne jest oszczędzanie pieniędzy, a nasza platforma jest przyjazna i prosta w użyciu. Zaprojektowaliśmy tę stronę, by ułatwić oszczędzanie pieniędzy w dowolnym miejscu na świecie."
+        }
+    },
+    "WhyUsSection": {
+        "title": "DLACZEGO MY?",
+        "content": {
+            "prelogo": "Na ",
+            "afterlogo": " wierzymy, że oszczędzanie powinno być łatwe. Oferujemy banalne rozwiązanie dla każdego, kto planuje oszczędzać pieniądze na wakacje, nowy samochód, czy po prostu chce mieć wirtualny zapis swoich oszczędności i wydatków."
+        }
+    },
+    "Balance": {
+        "BalanceTitle": "SALDO",
+        "ActionButton": "AKCJA",
+        "HistoryTitle": "HISTORIA",
+        "Action": "akcja",
+        "Amount": "ilość",
+        "Deposit": "wpłać",
+        "Withdraw": "wypłać",
+        "Add": "DODAJ"
+    },
+    "History": {
+        "deposit": "wpłata",
+        "withdraw": "wypłata"
+    },
+    "Goals": {
+        "Complete": "ZAKOŃCZ",
+        "Remove": "USUŃ",
+        "Title": "tytuł",
+        "Add": "DODAJ"
+    },
+    "Confirmation": {
+        "Text": "Ta akcja jest permanentna. Czy chcesz kontynuować?",
+        "Yes": "Tak",
+        "No": "Nie"
+    }
+}
