@@ -63,7 +63,7 @@ export default function ActionDialog(props: ActionDialogProps) {
         id="closeDialogButton"
       />
       <span className="title">{t("Balance.Action")}</span>
-      <Select id="action" items={[t("Balance.Deposit"), t("Balance.Withdraw")]} />
+      <Select id="action" items={[{name: t("Balance.Deposit"), value: "deposit"}, {name: t("Balance.Withdraw"), value: "withdraw"}]} />
       <span className="title">{t("Balance.Amount")}</span>
       <input id="amount" placeholder="$0" maxLength={20} />
       <Button
