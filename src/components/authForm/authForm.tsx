@@ -9,6 +9,7 @@ import {
 import { auth, signInWithGoogle } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { checkIfUserExists, newUser } from "../../scripts/db";
+import { useTranslation } from "react-i18next";
 
 type AuthFormProps = {
   type: "login" | "register";
@@ -17,6 +18,8 @@ type AuthFormProps = {
 export default function AuthForm(props: AuthFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const {t} = useTranslation()
 
   const Auth = (callback: (authCheck: boolean, userCredential?: UserCredential) => void) => {
     let vEmail = validateEmail(email);
@@ -46,20 +49,29 @@ export default function AuthForm(props: AuthFormProps) {
 
   const navigate = useNavigate();
 
+  const getTranslationForm = (type: string) => {
+    let typeArray = type.split("");
+    typeArray[0] = typeArray[0].toUpperCase()
+    let upperType = typeArray.join("");
+    return upperType + "Form"
+  }
+
+  let translationForm: string = getTranslationForm(props.type);
+
   return (
     <div className="authform">
-      <h2 className="title">{props.type}</h2>
+      <h2 className="title">{t(`Auth.${translationForm}.Title`)}</h2>
       <div className="input-container">
         <input
           type="email"
-          placeholder="email"
+          placeholder={t(`Auth.${translationForm}.email`)}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder={t(`Auth.${translationForm}.password`)}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
@@ -82,7 +94,7 @@ export default function AuthForm(props: AuthFormProps) {
           });
         }}
       >
-        {props.type}
+        {t(`Auth.${translationForm}.ButtonText`)}
       </Button>
       <div
         className="google-auth"
@@ -126,7 +138,7 @@ export default function AuthForm(props: AuthFormProps) {
         </svg>
       </div>
       <div className="second-option">
-        {(props.type === "login")? <span onClick={() => navigate("/register")}>create an account</span> : <span onClick={() => navigate("/login")}>login instead</span>}
+        {(props.type === "login")? <span onClick={() => navigate("/register")}>{t(`Auth.${translationForm}.RegisterInstead`)}</span> : <span onClick={() => navigate("/login")}>{t(`Auth.${translationForm}.LoginInstead`)}</span>}
       </div>
     </div>
   );

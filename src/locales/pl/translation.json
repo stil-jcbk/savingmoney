@@ -19,7 +19,7 @@
             "email": "email",
             "password": "hasło",
             "ButtonText": "zarejestruj",
-            "RegisterInstead": "zaloguj"
+            "LoginInstead": "zaloguj"
         }
     },
     "AboutSection": {
