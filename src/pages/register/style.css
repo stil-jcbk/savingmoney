@@ -1,0 +1,17 @@
+.auth-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.auth-body .privacy-policy{
+    color: var(--secondary-theme-color);
+}
+
+.auth-body .privacy-policy a{
+    color: var(--main-theme-color);
+    text-decoration: underline;
+}
