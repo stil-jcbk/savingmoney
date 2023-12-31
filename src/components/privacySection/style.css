@@ -1,0 +1,39 @@
+.privacy-section{
+    display: flex;
+    flex-direction: column;
+/*    grid-template-columns: 1fr;*/
+    font-family: "Poppins", sans-serif;
+    color: white;
+    max-width: 800px;
+    margin-bottom: 1rem;
+}
+
+.privacy-section .section-title{
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+}
+
+.privacy-section .section-content{
+    font-size: 1rem;
+    margin: 0 0 0 2rem;
+}
+
+.privacy-section .section-content a{
+    color: var(--main-theme-color);
+    text-decoration: underline;
+}
+
+.privacy-section .section-content ul{
+    margin: 0;
+}
+
+.privacy-section .section-content br{
+    display: block;
+    content: " ";
+    margin: 1rem 0;
+}
+
+.privacy-section .section-content span.super{
+    font-weight: bold;
+}

@@ -8,6 +8,7 @@ import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import AuthRoute from "./components/authRoute/authRoute";
+import PrivacyPolicy from "./pages/privacypolicy/privacypolicy";
 
 const router = createHashRouter([
   {
@@ -17,6 +18,10 @@ const router = createHashRouter([
         path: "/",
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
       },
       {
         element: <AuthRoute />,

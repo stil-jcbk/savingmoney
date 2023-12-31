@@ -1,12 +1,13 @@
 import "./style.css";
+import { Link } from "react-router-dom"
 
 export default function Footer() {
   return (
     <footer className="footer">
       <a href="https://jcbk.pl/" target="_blank" rel="noreferrer">
-        jcbk
+        jcbk©2023
       </a>
-      ©2023
+      <Link to="/privacy-policy">Privacy Policy</Link>
     </footer>
   );
 }
